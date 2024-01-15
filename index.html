@@ -11,7 +11,7 @@
             text-align: center;
         }
         P {
-            font-size: 25px;
+            font-size: 20px;
         }
         button {
             width: 70px;
@@ -26,12 +26,9 @@
             font-size: 25px;
         }
         output {
-            font: 25px;
+            font: 15px;
         }
-        .button2{
-            color: red;
-            height:30px;
-        }
+     
     </style>
 </head>
 
@@ -40,88 +37,76 @@
     <br>
 
     <button>PUSH</button>　←四角のボタンエリア＜button>＜/button＞
-
+    <h2></h2>
     <br><!-- 改行 -->
-    <br>
-
+    
     <textarea>ｸﾘｯｸするとあなたの名前が表示されます</textarea>
     ←テキストエリア
     <br><br>
 
     <div>
-        <input type="radio" name="color" value="red">朝飯
-        <input type="radio" name="color" value="Green">昼飯
-        <input type="radio" name="color" value="blue">晩飯
-                </div>
-        <div><br>
-        <button class="button2">OK</button>
+        <p>好きな色を一つだけ選んでOKﾎﾞﾀﾝ押してください</p>
+        <input type="radio" name="color" value="red">アカ
+        <input type="radio" name="color" value="Green">ミドリ
+        <input type="radio" name="color" value="blue">アオ
+    </div><div>  
+       <br>
+        <button id="button2">OK</button>
     </div>
         <!-- ﾗｼﾞｵﾎﾞﾀﾝをｸﾘｯｸすると他のボタンは色消える 1個だけ選択される＝HTMLだけの記述で -->
 
         <br><br>
-        <h2></h2>
+       
 
         <!-- 最上段はｲﾝﾌﾟｯﾄｴﾘｱ全般、上段はｲﾝﾌﾟｯﾄ枠内、下段はﾎﾞﾀﾝの設定。ipentecのパクリ１２／４-->
+ 
+<!-- ﾎﾞﾀﾝｸﾘｯｸしたら初期文字列に「数値」が上書きされます。formの外側で記述しないと表示されない　数値の後ろに個をつけたい -->  
+      <!-- textｴﾘｱの列40行５のﾃﾞﾌｫﾙﾄ値 -->
 
-        <form name="form" id="form" action="">
-
-            <input name="textBox" id="textBox" type="text" value="" />
-
-            <input type="button" value="ｲﾝﾌﾟｯﾄｴﾘｱ" onclick="onButtonClick();" />
-
-        </form>
-
-        <p id="output">入力文字数が表示されます</p><!-- ﾎﾞﾀﾝｸﾘｯｸしたら初期文字列に「数値」が上書きされます。formの外側で記述しないと表示されない　数値の後ろに個をつけたい -->
-
-        <div><!-- textｴﾘｱの列40行５のﾃﾞﾌｫﾙﾄ値 -->
-
-            <label>感想：<br><textarea cols="40" rows="4" id="reviewTextarea"></textarea></label>
-
-        </div>
-        <p id="msg"></p>
-
+            <label>コメント：<br><textarea cols="40" rows="4" id="reviewTextarea"></textarea>
+        
+        <P>ｺﾒﾝﾄｺﾋﾟｰと文字数</P>
+        <p id="msg"></p><p id="count"></p>
+    </label>
         <script>
             'use.strict'; {
                 let open = alert('自習画面開きますか？');
                 let name = prompt('あなたの名前を入力ください');/* nameを変数で入力 */
-                document.querySelector('textarea').addEventListener('click', () => {/* ﾃｷｽﾄｴﾘｱをｸﾘｯｸすると */document.querySelector('textarea').textContent = name;/* good! by myself */
-      
-                })
+                document.querySelector('textarea').addEventListener('click', () => {/* ﾃｷｽﾄｴﾘｱをｸﾘｯｸすると */
+                    document.querySelector('textarea').textContent = name;  /* good! by myself  nameを代入すると当初Pﾀｸﾞ記述の「あなたの...ください」に上書きされるからValue＝’’は不要である。*/
+            console.log(name)  ;/* ''で囲まない。入力値で表示させるため＝重要 */
                 // document.querySelector('textarea').addEventListener('click',()=>
-                // {document.querySelector('textarea').value=' '/* 処理はこちらが優先される＝＞の色が変わらない。｝）を削除するとｴﾗｰとなってしまいます。修正したい1/10 18時 */
+                // {document.querySelector('textarea').value=' ' */
+            })
                 document.querySelector('button').addEventListener('click', () => {
                     console.log('clicked');
                     document.querySelector('button').textContent = '押済み'
                     document.querySelector('h2').textContent = 'ごきげんよう(ｸﾘｯｸ後のJS内で指定したh2文字）';
+console.log('h2');
                 })
-                /* 以下ｴﾗｰとなるので一時中断。1/11１６１５ */
-                //  document.querySelector('button').addEventListener('click',()=>{
-                //   document.querySelectorAll('input').forEach((radio)=>{
-                //    if( radio.checked===true){
-                //       alert(radio.value);
-                //    };
+                /* alert正常に表示→ｶｯｺ波ｶｯｺが理解できない1/14　14:50*/
+                 document.querySelector('#button2').addEventListener('click',()=>{
+                    console.log('clicked');
 
-                // <!-- 以下 入力文字列の値の表示か文字数表示の処理 ipentecのパクリ１２／４-->
-
-                function onButtonClick() {/* ﾎﾞﾀﾝをｸﾘｯｸしたら入力値か文字数をtargetに代入*/
-
-                    target = document.getElementById("output");
-                    target.innerText = document.forms.form.textBox.value;
-                    console.log(target);
-
-                    target.innerText = document.forms.form.textBox.value.length;
-                };  /*左の波ｶｯｺは下段の処理を実行するためには必要です。削除するとｴﾗｰになります*/
-
-                /* 以下１／８に追加するもこのfunctionhはﾃｷｽﾄ枠の下側に入力した文字列が枠外でｸﾘｯｸの後、Pタグとして表示されるだけの事*/
-
+                  document.querySelectorAll('input').forEach((radio)=>{          
+                    /* ！！重要なのは3個のﾎﾞﾀﾝをまとめる値がないのでname属性colorを使ってひとまとまりにするのでselectprallを使う事。ﾀｲﾌﾟﾐｽ誤all、正＝All */
+                   if( radio.checked===true){
+                      alert(radio.value);
+                      console.log(radio);/* 後日削除します */
+                  };
+                });
+            
+  /* ﾗｼﾞｵﾎﾞﾀﾝ用に設定したOKボタンをクリックして初めて以下枠外表示が可能となるOKぼたんとりんくしてしまう。修正したい！！！ */              
                 function inputChange(event) {
                     msg.innerText = reviewTextarea.value;
+                    count.innerText =reviewTextarea.value.length;
                 }
                 let reviewTextarea = document.getElementById('reviewTextarea');
                 reviewTextarea.addEventListener('change', inputChange);
                 let msg = document.getElementById('msg');
-                  }
-
+                let count=document.getElementById('count');
+            }
+                  )};/* 1/14 1442に左記ｶｯｺ、波ｶｯｺを記述 */
         </script>
 </body>
 
