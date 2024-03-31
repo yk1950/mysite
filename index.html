@@ -1,0 +1,74 @@
+</P1><!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    button{cursor: pointer;}/* 全てのbuttonに適用されている。ﾎﾟｲﾝﾀ（ﾃﾞﾌｫﾙﾄは↑) */
+img{width:220px;}/*「img」とHTMLﾀｸﾞとして記載していないけど指定できる */
+#phot2{width:60px; display:none;} 
+#phot2.on{display:block;margin-left: 50px;} 
+#phot3{width: 50px;margin-left: 80px;display:none;}
+#phot3.on{display:block;margin-left: 50px;} 
+
+#toprow{display: flex; margin-left: 10px;}
+#toprow-2{display: flex;} 
+#stringymd{margin-left:30px;}
+#start1{margin-top:20px; height:30px;}
+#myYmd{margin-top:20px; height:35px; margin-left: 20px;}
+#agecalc{margin-top:20px; height:35px;}
+#secondrow{margin-right:30%; justify-content:space-around;}
+#thirdrow{display:flex;margin-left:10%; margin:10px;}
+#button3{margin-top:5px; height:30px;}
+#button4{ width:120px; height:30px;margin-left: 50px;}
+#button5{width:100px; height:30px;margin-left: 50px;}
+</style> 
+  <title>初作品玉石混載（2024/2～)</title>
+  </head>
+<body>
+  <div id="toprow">
+  <button id="start1" >学習開始日 push</button>
+   <P id="start2">.toLocaleDateString()</P>
+   
+   <p id="stringymd">生年月日</p>
+     <input type='text' id='myYmd' pattern="\d{8}" maxlength="8" required value="yyyy年mm月dd日の8桁入力">
+     <button id="agecalc">年齢計算push</button>
+<!-- 計算結果を文章化 -->
+</div>  
+<div id="toprow-2">
+       <span id="mainbirthday"></span>
+       <span id="daysPast"></span>
+             <span id="alllastmsg"></span>
+            </div>
+      
+      <div id="secondrow">
+<p> <textarea 
+   id='text'cols="20"rows="4" style="color:#8a10e8" >id=text HTMLで枠のｻｲｽﾞ設定したtextareaです。文字ｶﾗｰもHTML内で記述しています。</textarea>
+<br>
+<input id='glass' value="入力下さい近々削除します"><p1>id='glass'上のﾌｫｰﾑに入力した文字がここに表示されます</p1>
+<br>
+<input class="item" value="入力下さい"><p2>class=”item”上のﾌｫｰﾑに入力した文字数がここに表示されます</P2>
+</div>
+
+      <button id="calculateTime">自習経過時間push</button>
+       <p id="elapsedTime"></p>
+
+            <button id="button3">My Favorite</button>
+                  <P id="msgPhot">What?</p>
+                    <div id="thirdrow">       
+          <p id="phot1" ></P><!-- 画像の表示場所 -->
+               <!--画像を表示するためのコンテナ 3/10 msgと画像をbutton3に集約可能となった-->
+               <div>
+                           <button id="button5">ｲﾗｽﾄ</button>
+         <img id="phot2" src="okina_0001.png"height="120"width='140'>
+         <img id="phot3" src="osoushiki_teoke.png" width="20">
+        </div>
+<div>
+<button id="button4"> ﾒ ｯ ｾ ｰ ｼﾞ </button>
+<p id="lastMsg"></div>
+</body>
+  <script src="main3.js"></script>
+</body>
+</html>
